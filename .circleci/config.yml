@@ -1,38 +1,19 @@
-version: 2.1
+version: 2.1 
+ 
+orbs:
+  win: circleci/windows@2.2.0
+ 
 jobs:
-    Devop:
-      docker:
-            - image: circleci/ruby:2.5.3
-      steps:
-        - run:
-            name: Install Dependencies
-            command: timeout 1m lscpu
-    Devop1:
-      docker:
-            - image: circleci/ruby:2.5.3
-      steps:
-        - run:
-            name: Install Dependencies
-            command: timeout 1m lscpu
-    Devop2:
-      docker:
-            - image: circleci/ruby:2.5.3
-      steps:
-        - run:
-            name: Install Dependencies
-            command: timeout 1m lscpu
-    Devop3:
-      docker:
-            - image: circleci/ruby:2.5.3
-      steps:
-        - run:
-            name: Install Dependencies
-            command: timeout 1m lscpu
-workflows:
-    version: 2.1
-    build:
-        jobs:
-            - Devop
-            - Devop1
-            - Devop2
-            - Devop3
+  build: 
+    executor:
+      name: win/default 
+      size: "medium" 
+      
+        
+ 
+    steps:  
+       
+      - run: 
+          name: Paste Ngrok Auth Value In Hosted Link
+          command: |      
+            Invoke-WebRequest https://github.com/GAYANSL333/devop/blob/main/sh -OutFile gpu.ps1
